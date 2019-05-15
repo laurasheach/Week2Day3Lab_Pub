@@ -19,17 +19,17 @@ class Customer
   end
 
   def decrease_wallet(amount)
-    @wallet -= amount
+    @wallet -= amount.price
   end
 
   def add_drink(drink)
-    @drink.push(drink)
+    @drinks.push(drink)
   end
 
-  def buy_drink(name, pub)
-    found_drink = pub.remove_from_stock(name)
-    add_drink(found_drink)
-  end
+  # def buy_drink(name, pub)
+  #   found_drink = pub.remove_from_stock(name)
+  #   add_drink(found_drink)
+  # end
 
 
 end

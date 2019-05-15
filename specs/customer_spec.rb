@@ -25,5 +25,8 @@ class TestCustomer < MiniTest::Test
     assert_equal(95, @customer1.decrease_wallet(5))
   end
 
+  def test_add_drink
+    assert_equal(["beer"], @customer1.add_drink("beer"))
+  end
 
 end
