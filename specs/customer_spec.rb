@@ -13,9 +13,9 @@ class TestCustomer < MiniTest::Test
     @customer1 = Customer.new("Bob", 100, 0, 25)
     @customer2 = Customer.new("Margaret", 0, 60, 17)
 
-    @drink1 = Drink.new("beer", 5, 5, 10)
-    @drink2 = Drink.new("wine", 10, 10, 15)
-    @drink3 = Drink.new("whisky", 15, 12, 10)
+    @drink1 = Drink.new("beer", 5, 5)
+    @drink2 = Drink.new("wine", 10, 10)
+    @drink3 = Drink.new("whisky", 15, 12)
 
     @food1 = Food.new("Chips", 3, 10)
     @food2 = Food.new("Chips'n' Cheese", 4, 15)

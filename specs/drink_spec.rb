@@ -9,9 +9,9 @@ class TestDrink < MiniTest::Test
   def setup
 
 
-    @drink1 = Drink.new("beer", 5, 5, 10)
-    @drink2 = Drink.new("wine", 10, 10, 15)
-    @drink3 = Drink.new("whisky", 15, 12, 10)
+    @drink1 = Drink.new("beer", 5, 5)
+    @drink2 = Drink.new("wine", 10, 10)
+    @drink3 = Drink.new("whisky", 15, 12)
 
   end
 
