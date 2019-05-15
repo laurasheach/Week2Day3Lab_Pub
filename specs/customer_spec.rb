@@ -3,6 +3,8 @@ require('minitest/rg')
 require_relative('../customer.rb')
 require_relative('../drink.rb')
 require_relative('../pub.rb')
+require_relative('../food.rb')
+
 
 class TestCustomer < MiniTest::Test
 
@@ -14,6 +16,9 @@ class TestCustomer < MiniTest::Test
     @drink1 = Drink.new("beer", 5, 5, 10)
     @drink2 = Drink.new("wine", 10, 10, 15)
     @drink3 = Drink.new("whisky", 15, 12, 10)
+
+    @food1 = Food.new("Chips", 3, 10)
+    @food2 = Food.new("Chips'n' Cheese", 4, 15)
 
   end
 
@@ -35,6 +40,10 @@ class TestCustomer < MiniTest::Test
 
   def test_add_alcohol_level
     assert_equal(5, @customer1.add_alcohol_level(@drink1))
+  end
+
+  def test_decrease_drunkeness_level
+    assert_equal(45, @customer2.decrease_drunkeness_level(@food2))
   end
 
 end
