@@ -16,6 +16,7 @@ class TestPub < MiniTest::Test
 
     @customer1 = Customer.new("Bob", 100, 0, 25)
     @customer2 = Customer.new("Margaret", 0, 60, 17)
+    @customer3 = Customer.new("Jimmy", 50, 50, 65)
 
   end
 
@@ -38,10 +39,41 @@ class TestPub < MiniTest::Test
 
   def test_sell_customer_drink
     @pub.sell_drink_to_customer(@customer1, @drink2)
+    assert_equal(false, @pub.too_drunk(@customer1))
     assert_equal([@drink1, @drink3], @pub.stock)
     assert_equal([@drink2], @customer1.drinks)
     assert_equal(90, @customer1.wallet)
     assert_equal(1010, @pub.till)
+    assert_equal(10, @customer1.drunkeness)
+  end
+
+  def test_check_age__over_18
+    assert_equal(true, @pub.check_age(@customer1))
+  end
+
+  def test_check_age__under_18
+    assert_equal(false, @pub.check_age(@customer2))
+  end
+
+  def test_sell_customer_drink__too_young
+    assert_equal("Sorry, you are too young", @pub.sell_drink_to_customer(@customer2, @drink2))
+    assert_equal([@drink1, @drink2, @drink3], @pub.stock)
+    assert_equal([], @customer2.drinks)
+    assert_equal(0, @customer2.wallet)
+    assert_equal(1000, @pub.till)
+  end
+
+  def test_too_drunk
+    assert_equal(true, @pub.too_drunk(@customer2))
+    assert_equal(false, @pub.too_drunk(@customer1))
+  end
+
+  def test_sell_customer_drink__too_drunk
+    assert_equal("Sorry, you are too drunk", @pub.sell_drink_to_customer(@customer3, @drink2))
+    assert_equal([@drink1, @drink2, @drink3], @pub.stock)
+    assert_equal([], @customer3.drinks)
+    assert_equal(50, @customer3.wallet)
+    assert_equal(1000, @pub.till)
   end
 
 end

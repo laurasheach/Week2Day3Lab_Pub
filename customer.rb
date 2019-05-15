@@ -26,10 +26,9 @@ class Customer
     @drinks.push(drink)
   end
 
-  # def buy_drink(name, pub)
-  #   found_drink = pub.remove_from_stock(name)
-  #   add_drink(found_drink)
-  # end
+  def add_alcohol_level(drink)
+    @drunkeness += drink.alcohol_level
+  end
 
 
 end

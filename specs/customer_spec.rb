@@ -11,6 +11,10 @@ class TestCustomer < MiniTest::Test
     @customer1 = Customer.new("Bob", 100, 0, 25)
     @customer2 = Customer.new("Margaret", 0, 60, 17)
 
+    @drink1 = Drink.new("beer", 5, 5, 10)
+    @drink2 = Drink.new("wine", 10, 10, 15)
+    @drink3 = Drink.new("whisky", 15, 12, 10)
+
   end
 
   def test_customer_created
@@ -22,11 +26,15 @@ class TestCustomer < MiniTest::Test
   end
 
   def test_decrease_wallet
-    assert_equal(95, @customer1.decrease_wallet(5))
+    assert_equal(95, @customer1.decrease_wallet(@drink1))
   end
 
   def test_add_drink
     assert_equal(["beer"], @customer1.add_drink("beer"))
+  end
+
+  def test_add_alcohol_level
+    assert_equal(5, @customer1.add_alcohol_level(@drink1))
   end
 
 end
